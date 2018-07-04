@@ -6,7 +6,7 @@
   - name: Create Datacenter
     local_action:
       module: vmware_datacenter
-      hostname: florian.paris.local
+      hostname: 192.168.17.20
       username: root 
       password: 'Florian2015!'
       datacenter_name: 'vDc_Ansible'
