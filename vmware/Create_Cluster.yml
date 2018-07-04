@@ -8,7 +8,7 @@
       module: vmware_cluster
       hostname: 192.168.17.20
       username: root
-      password: 'Espoir15'
+      password: 'Florian2015!'
       datacenter_name: 'Florian_ANSIBLE'
       cluster_name: C_Florian
       enable_ha: yes
