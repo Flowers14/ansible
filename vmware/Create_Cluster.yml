@@ -6,7 +6,7 @@
   - name: Create Cluster
     local_action:
       module: vmware_cluster
-      hostname: 192.168.17.10
+      hostname: 192.168.17.20
       username: root
       password: 'Espoir15'
       datacenter_name: 'Florian_ANSIBLE'
