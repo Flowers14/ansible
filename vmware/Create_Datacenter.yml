@@ -1,14 +1,14 @@
 ---
 - name : Create Datacenter
-  hosts: localhost
+  hosts: 192.168.17.20
 
   tasks:
   - name: Create Datacenter
     local_action:
       module: vmware_datacenter
-      hostname: vc65.labvmware.local
-      username: administrator@vsphere.local
-      password: 'YourMdp'
+      hostname: florian.paris.local
+      username: root 
+      password: 'Florian2015!'
       datacenter_name: 'vDc_Ansible'
       state: present
       validate_certs: no
