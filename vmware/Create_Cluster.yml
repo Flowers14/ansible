@@ -9,7 +9,7 @@
       hostname: 192.168.17.10
       username: root
       password: 'Espoir15'
-      datacenter_name: 'Florian_ANSIBLE2'
+      datacenter_name: 'Florian_ANSIBLE'
       cluster_name: C_Florian
       enable_ha: yes
       enable_drs: yes
