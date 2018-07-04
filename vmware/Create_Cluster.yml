@@ -6,11 +6,11 @@
   - name: Create Cluster
     local_action:
       module: vmware_cluster
-      hostname: vc65.labvmware.local
-      username: administrator@vsphere.local
-      password: 'YourMdp'
-      datacenter_name: 'vDc_Ansible'
-      cluster_name: C_Ansible
+      hostname: 192.168.17.10
+      username: root
+      password: 'Espoir15'
+      datacenter_name: 'Florian_ANSIBLE2'
+      cluster_name: C_Florian
       enable_ha: yes
       enable_drs: yes
       enable_vsan: no
