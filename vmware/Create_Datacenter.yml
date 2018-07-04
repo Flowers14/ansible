@@ -9,7 +9,7 @@
       hostname: 192.168.17.20
       username: root 
       password: 'Florian2015!'
-      datacenter_name: 'vDc_Ansible'
+      datacenter_name: 'Florian_ANSIBLE'
       state: present
       validate_certs: no
 #    delegate_to: localhost
