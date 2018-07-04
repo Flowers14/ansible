@@ -1,6 +1,6 @@
 ---
 - name : Create Datacenter
-  hosts: 192.168.17.20
+  hosts: localhost
 
   tasks:
   - name: Create Datacenter
