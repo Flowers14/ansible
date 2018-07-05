@@ -9,7 +9,6 @@
     username: root
     password: Florian2015!
     guest: florian.parisVM
-    state: powered_off
     vm_extra_config:
       vcpu.hotadd: yes
       mem.hotadd:  yes
