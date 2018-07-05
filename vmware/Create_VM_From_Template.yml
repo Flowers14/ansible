@@ -1,55 +1,40 @@
 ---
-- name: Create a VM from a template
-  hosts: localhost
-
-  vars_prompt:
-    - name: "florian.paris"
-      prompt: "florian.paris"
-      private: no
-      default: "florian.paris"
-    - name: "root"
-      prompt: "root"
-      private: no
-      default: "Florian2015!"
-    - name: "vcenter_pass"
-      prompt: "Florian2015!"
-      private: yes
-
-  vars:
-    datacenter: 'florian.paris'
-    esxi_host: '192.168.17.10'
-    notes: 'Created by Florian paris'
+- vsphere_guest:
     vcenter_hostname: 192.168.17.20
-    vcenter_user: root
-    vcenter_pass: Florian2015!
-    datastore: florian.paris
-    network: VM Network
-    memory: 20
-    cpucount: 1
-    osid: debin6_64Guest
-
-  tasks:
-  - name: Create a VM from template
-    vmware_guest:
-      hostname: 192.168.17.10
-      username: root
-      password: 'Espoir15'
-      validate_certs: no
-#      folder: /esxi3_local1/vm1/
-      name: florian.parisVM
-      state: present
-      template: vm1
-      disk:
-      - size_gb: 1
+    username: root
+    password: Florian2015!
+    guest: florian.parisVM
+    state: powered_off
+    vm_extra_config:
+      vcpu.hotadd: yes
+      mem.hotadd:  yes
+      notes: Create vm on esxi florian
+    vm_disk:
+      disk1:
+        size_gb: 1
         type: thin
-        datastore: florian.paris
-      hardware:
-        memory_mb: 200
-        num_cpus: 1
-        scsi: paravirtual
-#      networks:
-#      - name: 'VM Network'
-#        mac: aa:bb:dd:aa:00:14
-      wait_for_ip_address: yes
-#    delegate_to: localhost
-    register: deploy
+        datastore: florian.paris       
+    vm_nic:
+      nic1:
+        type: vmxnet3
+        network: VM Network
+        network_type: standard   
+    vm_hardware:
+      memory_mb: 200
+      num_cpus: 1
+      osid: centos64Guest
+      scsi: paravirtual  
+    esxi:
+      datacenter: florian.paris
+      hostname: 192.168.17.10
+
+
+
+# Task to gather facts from a vSphere cluster only if the system is a VMware guest
+
+- vsphere_guest:
+    vcenter_hostname: 192.168.17.20
+    username: root
+    password: Florian2015!
+    guest: florian.parisVM
+    vmware_guest_facts: yes
