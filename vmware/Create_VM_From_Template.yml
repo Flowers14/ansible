@@ -1,7 +1,8 @@
 ---
 - name: Create a VM from a template
   hosts: 127.0.0.1
-  
+
+tasks: 
 - name: Create a virtual machine on ESXi
   vmware_guest:
     hostname: "192.168.17.20"
