@@ -22,7 +22,7 @@
       username: root
       password: 'Espoir15'
       validate_certs: no
-      folder: /esxiVM/
+      folder: /
       name: florian.parisVM
       state: present
       template: vm1
