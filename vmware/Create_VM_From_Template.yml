@@ -5,34 +5,34 @@
   
   tasks :
   - vsphere_guest:
-    vcenter_hostname: 192.168.17.20
-    username: root
-    password: Florian2015!
-    guest: florian.parisVM
-    vm_extra_config:
-      vcpu.hotadd: yes
-      mem.hotadd:  yes
-      notes: This is a test VM
-      folder: /
-    vm_disk:
-      disk1:
-        size_gb: 1
-        type: thin
-        datastore: datastore1
+      vcenter_hostname: 192.168.17.20
+      username: root
+      password: Florian2015!
+      guest: florian.parisVM
+      vm_extra_config:
+        vcpu.hotadd: yes
+        mem.hotadd:  yes
+        notes: This is a test VM
+        folder: /
+      vm_disk:
+        disk1:
+          size_gb: 1
+          type: thin
+          datastore: datastore1
         # VMs can be put into folders. The value given here is either the full path
         # to the folder (e.g. production/customerA/lamp) or just the last component
         # of the path (e.g. lamp):
         folder: /
-    vm_nic:
-      nic1:
-        type: vmxnet3
-        network: VM Network
-        network_type: standard
-    vm_hardware:
-      memory_mb: 208
-      num_cpus: 1
-      osid: centos64Guest
-      scsi: paravirtual
-    esxi:
-      datacenter: florian.paris
-      hostname: 192.168.17.10
+      vm_nic:
+        nic1:
+          type: vmxnet3
+          network: VM Network
+          network_type: standard
+      vm_hardware:
+        memory_mb: 208
+        num_cpus: 1
+        osid: centos64Guest
+        scsi: paravirtual
+      esxi:
+        datacenter: florian.paris
+        hostname: 192.168.17.10
