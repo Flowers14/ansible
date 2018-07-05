@@ -25,6 +25,7 @@
   delegate_to: localhost
   register: deploy
   
+  Tasks : 
   - name: Create a VM from a template
   vmware_guest:
     hostname: 192.168.17.10
