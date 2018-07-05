@@ -2,23 +2,46 @@
 - name: Create a VM from a template
   hosts: localhost
   
+  
   tasks :
-  ## Create VM
   - vsphere_guest: 192.168.17.20
-     username: root
-     password: Florian2015!
-     guest:  florian.parisVM
-     state: powered_off
-     vm_disk:
-       disk1:
-         size_gb: 2
-         type: thin
-         datastore: datastore1
-     vm_hardware:
-       memory_mb: 204
-       num_cpus: 1
-       scsi: paravirtual
-       osid: rhel6_64Guest     
-     esxi:
-      datacenter: 192.168.17.10
-      hostname: 192.168.17.10 
+    username: root
+    password: Florian2015!
+    guest: florian.parisVM
+    state: powered_off
+    vm_extra_config:
+      vcpu.hotadd: yes
+      mem.hotadd:  yes
+      notes: This is a test VM
+      folder: /
+    vm_disk:
+      disk1:
+        size_gb: 1
+        type: thin
+        datastore: datastore1
+        # VMs can be put into folders. The value given here is either the full path
+        # to the folder (e.g. production/customerA/lamp) or just the last component
+        # of the path (e.g. lamp):
+        folder: /
+    vm_nic:
+      nic1:
+        type: vmxnet3
+        network: VM Network
+        network_type: standard
+    vm_hardware:
+      memory_mb: 208
+      num_cpus: 1
+      osid: centos64Guest
+      scsi: paravirtual
+    esxi:
+      datacenter: florian.paris
+      hostname: 192.168.17.10
+
+# Task to gather facts from a vSphere cluster only if the system is a VMware guest
+
+- vsphere_guest:
+    vcenter_hostname: 192.168.17.20
+    username: root
+    password: Florian2015!
+    guest: florian.parisVM
+    vmware_guest_facts: yes
