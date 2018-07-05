@@ -9,7 +9,7 @@
     vcenter_hostname: 192.168.17.20
     vcenter_user: root
     vcenter_pass: Florian2015!
-    datastore: vsanDatastore
+    datastore: datastore1
     network: VM Network
     memory: 10
     cpucount: 1
@@ -29,7 +29,7 @@
       disk:
       - size_gb: 1
         type: thin
-        datastore: esxi3_local1
+        datastore: datastore1/esxiVM
       hardware:
         memory_mb: 512
         num_cpus: 1
