@@ -5,8 +5,8 @@
   tasks :
   ## Create VM
   - vsphere_guest: 192.168.17.20
-     username: "root"
-     password: "Florian2015!"
+     username: root
+     password: Florian2015!
      guest:  florian.parisVM
      state: powered_off
      vm_disk:
