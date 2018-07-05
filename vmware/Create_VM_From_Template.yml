@@ -2,34 +2,36 @@
 - name : Create VM
   hosts: localhost
   
-- vsphere_guest:
-    vcenter_hostname: 192.168.17.20
-    username: root
-    password: Florian2015!
-    guest: florian.parisVM
-    state: powered_off
-    vm_extra_config:
-      vcpu.hotadd: yes
-      mem.hotadd:  yes
-      notes: Create vm on esxi florian
-    vm_disk:
-      disk1:
-        size_gb: 1
-        type: thin
-        datastore: florian.paris       
-    vm_nic:
-      nic1:
-        type: vmxnet3
-        network: VM Network
-        network_type: standard   
-    vm_hardware:
-      memory_mb: 200
-      num_cpus: 1
-      osid: centos64Guest
-      scsi: paravirtual  
-    esxi:
-      datacenter: florian.paris
-      hostname: 192.168.17.10
+  tasks :
+  
+    - vsphere_guest:
+        vcenter_hostname: 192.168.17.20
+        username: root
+        password: Florian2015!
+        guest: florian.parisVM
+        state: powered_off
+        vm_extra_config:
+          vcpu.hotadd: yes
+          mem.hotadd:  yes
+          notes: Create vm on esxi florian
+        vm_disk:
+          disk1:
+           size_gb: 1
+           type: thin
+           datastore: florian.paris       
+        vm_nic:
+          nic1:
+            type: vmxnet3
+            network: VM Network
+            network_type: standard   
+        vm_hardware:
+          memory_mb: 200
+           num_cpus: 1
+              osid: centos64Guest
+              scsi: paravirtual  
+        esxi:
+          datacenter: florian.paris
+          hostname: 192.168.17.10
 
 
 
