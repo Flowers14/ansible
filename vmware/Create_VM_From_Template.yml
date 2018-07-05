@@ -1,29 +1,29 @@
 ---
 - name: Create a VM from a template
   hosts: localhost
-
-    - name: Create a VM template
-        vmware_guest:
-        hostname: 192.168.17.10
-        username: root
-        password: Espoir15
-        validate_certs: no
-        datacenter: datacenter1
-        cluster: 192.168.17.20
-        folder: /
-        name: testvm
-        is_template: yes
-        guest_id: debian6_64Guest
-        disk:
-          - size_gb: 1
-          type: thin
-          datastore: datastore1
-        hardware:
-          memory_mb: 200
-          num_cpus: 1
-          scsi: lsilogic
-      delegate_to: localhost
-      register: deploy
+  
+- name: Create a VM template
+  vmware_guest:
+    hostname: 192.168.17.10
+    username: root
+    password: Espoir15
+    validate_certs: no
+    datacenter: datacenter1
+    cluster: 192.168.17.20
+    folder: /
+    name: testvm
+    is_template: yes
+    guest_id: debian6_64Guest
+    disk:
+    - size_gb: 1
+      type: thin
+      datastore: datastore1
+    hardware:
+      memory_mb: 200
+      num_cpus: 1
+      scsi: lsilogic
+  delegate_to: localhost
+  register: deploy
   
   tasks : 
   - name: Create a VM from a template
