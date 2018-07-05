@@ -9,24 +9,11 @@
     vcenter_hostname: 192.168.17.20
     vcenter_user: root
     vcenter_pass: Florian2015!
-    datastore: /florian.paris/esxi/datastore1/
+    datastore: /
     network: VM Network
     memory: 10
     cpucount: 1
     osid: debin6_64Guest
-    
-    
-  - name: datacenter as florian.paris
-    vmware_datastore_facts:
-      hostname: 192.168.17.20
-      username: root
-      password: Florian2015!
-      datacenter: florian.paris
-      validate_certs: no
-    delegate_to: localhost
-    register: facts
-    
-    
     
 
   tasks:
@@ -36,14 +23,14 @@
       username: root
       password: Espoir15
       validate_certs: no
-      folder: florian.paris/esxi/datastore1/toto/
+      folder: /
       name: florian.parisVM
       state: present
       template: vm1
       disk:
       - size_gb: 1
         type: thin
-        datastore: florian.paris/esxi/datastore1/esxiVM/
+        datastore: /
       hardware:
         memory_mb: 512
         num_cpus: 1
