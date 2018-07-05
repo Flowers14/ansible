@@ -16,7 +16,7 @@
     osid: debin6_64Guest
     
     
-    - name: Gather facts from standalone ESXi server having datacenter as 'ha-datacenter'
+    - name: datacenter as florian.paris
       vmware_datastore_facts:
         hostname: 192.168.17.20
         username: root
