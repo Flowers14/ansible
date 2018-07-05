@@ -29,4 +29,3 @@
       netmask: 255.255.255.0
       device_type: vmxnet3
     wait_for_ip_address: yes
-  register: deploy_vm
