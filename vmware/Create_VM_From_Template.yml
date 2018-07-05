@@ -2,31 +2,31 @@
 - name: Create a VM from a template
   hosts: 127.0.0.1
 
-tasks: 
-- name: Create a virtual machine on ESXi
-  vmware_guest:
-    hostname: "192.168.17.20"
-    username: "root"
-    password: "Florian2015!"
-    validate_certs: False
-    folder: /
-    name: test_vm_0001
-    state: poweredon
-    guest_id: centos64Guest
+  tasks: 
+  - name: Create a virtual machine on ESXi
+    vmware_guest:
+      hostname: "192.168.17.20"
+      username: "root"
+      password: "Florian2015!"
+      validate_certs: False
+      folder: /
+      name: test_vm_0001
+      state: poweredon
+      guest_id: centos64Guest
     # This is hostname of particular ESXi server on which user wants VM to be deployed
-    esxi_hostname: "192.168.17.10"
-    disk:
-    - size_gb: 1
-      type: thin
-      datastore: datastore1
-    hardware:
-      memory_mb: 200
-      num_cpus: 1
-      scsi: paravirtual
-    networks:
-    - name: VM Network
-      mac: aa:bb:dd:aa:00:14
-      ip: 192.168.17.100
-      netmask: 255.255.255.0
-      device_type: vmxnet3
-    wait_for_ip_address: yes
+      esxi_hostname: "192.168.17.10"
+      disk:
+      - size_gb: 1
+        type: thin
+        datastore: datastore1
+      hardware:
+        memory_mb: 200
+        num_cpus: 1
+        scsi: paravirtual
+      networks:
+      - name: VM Network
+        mac: aa:bb:dd:aa:00:14
+        ip: 192.168.17.100
+        netmask: 255.255.255.0
+        device_type: vmxnet3
+      wait_for_ip_address: yes
