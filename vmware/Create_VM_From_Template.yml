@@ -10,19 +10,19 @@
       password: "Florian2015!"
       validate_certs: False
       folder: /
-      name: test_vm_0001
-      state: poweredon
+      name: florian.paris
+      state: poweredoff
       datacenter: florian.paris
       guest_id: centos64Guest
     # This is hostname of particular ESXi server on which user wants VM to be deployed
       esxi_hostname: "192.168.17.10"
       disk:
-      - size_gb: 1
+      - size_gb: 3
         type: thin
         datastore: datastore1
       hardware:
-        memory_mb: 200
-        num_cpus: 1
+        memory_mb: 225
+        num_cpus: 2
         scsi: paravirtual
       networks:
       - name: VM Network
