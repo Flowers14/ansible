@@ -3,48 +3,48 @@
   hosts: localhost
 
   vars_prompt:
-    - name: "vcenter_hostname"
-      prompt: "Enter vcenter hostname"
+    - name: "florian.paris"
+      prompt: "florian.paris"
       private: no
-      default: "vc65.labvmware.local"
-    - name: "vcenter_user"
-      prompt: "Enter vcenter username"
+      default: "florian.paris"
+    - name: "root"
+      prompt: "root"
       private: no
-      default: "administrator@vsphere.local"
+      default: "Florian2015!"
     - name: "vcenter_pass"
-      prompt: "Enter vcenter password"
+      prompt: "Florian2015!"
       private: yes
 
   vars:
-    datacenter: 'Labvmware'
-    esxi_host: 'esxi1.labvmware.local'
-    notes: 'Created by Ansible'
-    vcenter_hostname: vc65.labvmware.local
-    vcenter_user: administrator@vsphere.local
-    vcenter_pass: Espoir@2012
-    datastore: vsanDatastore
+    datacenter: 'florian.paris'
+    esxi_host: '192.168.17.10'
+    notes: 'Created by Florian paris'
+    vcenter_hostname: 192.168.17.20
+    vcenter_user: root
+    vcenter_pass: Florian2015!
+    datastore: florian.paris
     network: VM Network
-    memory: 10
+    memory: 20
     cpucount: 1
     osid: debin6_64Guest
 
   tasks:
   - name: Create a VM from template
     vmware_guest:
-      hostname: vc65.labvmware.local
-      username: administrator@vsphere.local
-      password: 'YourPassword'
+      hostname: 192.168.17.10
+      username: root
+      password: 'Espoir15'
       validate_certs: no
 #      folder: /esxi3_local1/vm1/
-      name: testvm_3
+      name: florian.parisVM
       state: present
       template: vm1
       disk:
       - size_gb: 1
         type: thin
-        datastore: esxi3_local1
+        datastore: florian.paris
       hardware:
-        memory_mb: 512
+        memory_mb: 200
         num_cpus: 1
         scsi: paravirtual
 #      networks:
