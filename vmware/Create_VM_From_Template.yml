@@ -37,11 +37,3 @@
     esxi:
       datacenter: florian.paris
       hostname: 192.168.17.10
-
-# Task to gather facts from a vSphere cluster only if the system is a VMware guest
-  - vsphere_guest:
-    vcenter_hostname: 192.168.17.20
-    username: root
-    password: Florian2015!
-    guest: florian.parisVM
-    vmware_guest_facts: yes
