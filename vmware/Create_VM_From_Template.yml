@@ -9,7 +9,7 @@
     vcenter_hostname: 192.168.17.20
     vcenter_user: root
     vcenter_pass: Florian2015!
-    datastore: vsanDatastore
+    datastore: datastore1
     network: VM Network
     memory: 10
     cpucount: 1
@@ -22,7 +22,7 @@
       username: root
       password: 'Espoir15'
       validate_certs: no
-#      folder: /esxi3_local1/vm1/
+      folder: /datastore1/
       name: florian.parisVM
       state: present
       template: vm1
