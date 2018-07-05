@@ -1,45 +1,55 @@
 ---
-- name : Create VM
+- name: Create a VM from a template
   hosts: localhost
-  
-  tasks :
-  
-    - vsphere_guest:
-        vcenter_hostname: 192.168.17.20
-        username: root
-        password: Florian2015!
-        guest: florian.parisVM
-        state: powered_off
-        vm_extra_config:
-          vcpu.hotadd: yes
-          mem.hotadd:  yes
-          notes: Create vm on esxi florian
-        vm_disk:
-          disk1:
-           size_gb: 1
-           type: thin
-           datastore: florian.paris       
-        vm_nic:
-          nic1:
-            type: vmxnet3
-            network: VM Network
-            network_type: standard   
-        vm_hardware:
-            memory_mb: 200
-            num_cpus: 1
-            osid: centos64Guest
-            scsi: paravirtual  
-        esxi:
-            datacenter: florian.paris
-            hostname: 192.168.17.10
 
+  vars_prompt:
+    - name: "vcenter_hostname"
+      prompt: "Enter vcenter hostname"
+      private: no
+      default: "vc65.labvmware.local"
+    - name: "vcenter_user"
+      prompt: "Enter vcenter username"
+      private: no
+      default: "administrator@vsphere.local"
+    - name: "vcenter_pass"
+      prompt: "Enter vcenter password"
+      private: yes
 
+  vars:
+    datacenter: 'florian.paris'
+    esxi_host: '192.168.17.10'
+    notes: 'Created by Florian PARIS'
+    vcenter_hostname: 192.168.17.20
+    vcenter_user: root
+    vcenter_pass: Florian2015!
+    datastore: vsanDatastore
+    network: VM Network
+    memory: 10
+    cpucount: 1
+    osid: debin6_64Guest
 
-# Task to gather facts from a vSphere cluster only if the system is a VMware guest
-
-#- vsphere_guest:
-#   vcenter_hostname: 192.168.17.20
-#    username: root
-#    password: Florian2015!
-#    guest: florian.parisVM
-#    vmware_guest_facts: yes
+  tasks:
+  - name: Create a VM Florian PARIS
+    vmware_guest:
+      hostname: florian.parisVM
+      username: root
+      password: 'Florian2015!'
+      validate_certs: no
+#      folder: /esxi3_local1/vm1/
+      name: florian.parisVM
+      state: present
+      template: vm1
+      disk:
+      - size_gb: 1
+        type: thin
+        datastore: esxi3_local1
+      hardware:
+        memory_mb: 100
+        num_cpus: 1
+        scsi: paravirtual
+#      networks:
+#      - name: 'VM Network'
+#        mac: aa:bb:dd:aa:00:14
+      wait_for_ip_address: yes
+#    delegate_to: localhost
+    register: deploy
