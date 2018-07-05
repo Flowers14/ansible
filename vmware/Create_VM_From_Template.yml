@@ -25,13 +25,13 @@
             network: VM Network
             network_type: standard   
         vm_hardware:
-          memory_mb: 200
-           num_cpus: 1
-              osid: centos64Guest
-              scsi: paravirtual  
+            memory_mb: 200
+            num_cpus: 1
+            osid: centos64Guest
+            scsi: paravirtual  
         esxi:
-          datacenter: florian.paris
-          hostname: 192.168.17.10
+            datacenter: florian.paris
+            hostname: 192.168.17.10
 
 
 
