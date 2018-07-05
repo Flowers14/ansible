@@ -22,7 +22,7 @@
       username: root
       password: Espoir15
       validate_certs: no
-#      folder: /esxi3_local1/vm1/
+      folder: /datastore1/toto/
       name: florian.parisVM
       state: present
       template: vm1
