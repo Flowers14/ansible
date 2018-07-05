@@ -11,7 +11,7 @@
       validate_certs: False
       folder: /
       name: florian.paris
-      state: poweredoff
+      #state: poweredoff
       datacenter: florian.paris
       guest_id: centos64Guest
     # This is hostname of particular ESXi server on which user wants VM to be deployed
