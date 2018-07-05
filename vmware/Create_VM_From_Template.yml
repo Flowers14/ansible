@@ -12,6 +12,7 @@
       folder: /
       name: test_vm_0001
       state: poweredon
+      datacenter: florian.paris
       guest_id: centos64Guest
     # This is hostname of particular ESXi server on which user wants VM to be deployed
       esxi_hostname: "192.168.17.10"
