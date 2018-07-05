@@ -2,6 +2,7 @@
 - name: Create a VM from a template
   hosts: localhost
   
+  tasks :
   ## Create VM
   - vsphere_guest:
      vcenter_hostname: 192.168.17.20
