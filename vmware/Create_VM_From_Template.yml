@@ -44,7 +44,7 @@
           memory_mb: 200
           num_cpus: 1
           scsi: paravirtual
-       networks:
+      networks:
       - name: VM Network
         mac: aa:bb:dd:aa:00:14
         wait_for_ip_address: yes
