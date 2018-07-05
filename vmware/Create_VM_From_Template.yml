@@ -18,7 +18,7 @@
   tasks:
   - name: Create a VM Florian PARIS
     vmware_guest:
-      hostname: 192.168.17.20
+      hostname: 192.168.17.10
       username: root
       password: 'Espoir15'
       validate_certs: no
