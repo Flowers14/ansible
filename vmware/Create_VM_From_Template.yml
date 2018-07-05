@@ -2,41 +2,50 @@
 - name: Create a VM from a template
   hosts: localhost
 
-  vars:
-    datacenter: 'florian.paris'
-    esxi_host: '192.168.17.10'
-    notes: 'Created by Florian PARIS'
-    vcenter_hostname: 192.168.17.20
-    vcenter_user: root
-    vcenter_pass: Florian2015!
-    datastore: datastore1
-    network: VM Network
-    memory: 10
-    cpucount: 1
-    osid: debin6_64Guest
-
-  tasks:
-  - name: Create a VM Florian PARIS
-    vmware_guest:
-      hostname: 192.168.17.10
-      username: root
-      password: 'Espoir15'
-      validate_certs: no
-      folder: /
-      name: florian.parisVM
-      state: present
-      template: vm1
-      disk:
-      - size_gb: 1
-        type: thin
-        datastore: esxi3_local1
-      hardware:
-        memory_mb: 100
-        num_cpus: 1
-        scsi: paravirtual
-#      networks:
-#      - name: 'VM Network'
-#        mac: aa:bb:dd:aa:00:14
-      wait_for_ip_address: yes
-#    delegate_to: localhost
-    register: deploy
+  - name: Create a VM template
+  vmware_guest:
+    hostname: 192.168.17.10
+    username: root
+    password: Espoir15
+    validate_certs: no
+    datacenter: datacenter1
+    cluster: 192.168.17.20
+    folder: /
+    name: testvm
+    is_template: yes
+    guest_id: debian6_64Guest
+    disk:
+    - size_gb: 1
+      type: thin
+      datastore: datastore1
+    hardware:
+      memory_mb: 200
+      num_cpus: 1
+      scsi: lsilogic
+  delegate_to: localhost
+  register: deploy
+  
+  - name: Create a VM from a template
+  vmware_guest:
+    hostname: 192.168.17.10
+    username: root
+    password: Espoir15
+    validate_certs: no
+    folder: /
+    name: florian.parisVM
+    state: poweredon
+    template: testvm
+    disk:
+    - size_gb: 1
+      type: thin
+      datastore: datastore1
+    hardware:
+      memory_mb: 200
+      num_cpus: 1
+      scsi: paravirtual
+    networks:
+    - name: VM Network
+      mac: aa:bb:dd:aa:00:14
+    wait_for_ip_address: yes
+  delegate_to: localhost
+  register: deploy
