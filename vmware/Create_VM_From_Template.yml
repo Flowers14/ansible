@@ -2,51 +2,23 @@
 - name: Create a VM from a template
   hosts: localhost
   
-- name: Create a VM template
-  vmware_guest:
-    hostname: 192.168.17.10
-    username: root
-    password: Espoir15
-    validate_certs: no
-    datacenter: datacenter1
-    cluster: 192.168.17.20
-    folder: /
-    name: testvm
-    is_template: yes
-    guest_id: debian6_64Guest
-    disk:
-    - size_gb: 1
-      type: thin
-      datastore: datastore1
-    hardware:
-      memory_mb: 200
-      num_cpus: 1
-      scsi: lsilogic
-  delegate_to: localhost
-  register: deploy
-  
-  tasks : 
-  - name: Create a VM from a template
-    vmware_guest:
-      hostname: 192.168.17.10
-      username: root
-      password: Espoir15
-      validate_certs: no
-      folder: /
-      name: florian.parisVM
-      state: poweredon
-      template: testvm
-      disk:
-        - size_gb: 1
-          type: thin
-          datastore: datastore1
-      hardware:
-          memory_mb: 200
-          num_cpus: 1
-          scsi: paravirtual
-      networks:
-      - name: VM Network
-        mac: aa:bb:dd:aa:00:14
-        wait_for_ip_address: yes
-        delegate_to: localhost
-    register: deploy
+  ## Create VM
+  - vsphere_guest:
+     vcenter_hostname: 192.168.17.20
+     username: "{{ root }}"
+     password: "{{ Florian2015! }}"
+     guest:  
+     state: powered_off
+     vm_disk:
+       disk1:
+         size_gb: 2
+         type: thin
+         datastore: datastore1
+     vm_hardware:
+       memory_mb: 204
+       num_cpus: 1
+       scsi: paravirtual
+       osid: rhel6_64Guest     
+     esxi:
+      datacenter: 192.168.17.10
+      hostname: 192.168.17.10 
