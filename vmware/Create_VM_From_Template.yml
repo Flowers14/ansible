@@ -1,7 +1,7 @@
 ---
 - name: Create a VM from a template
-  hosts: localhost
-  delegate_to: localhost
+    hosts: localhost
+    delegate_to: localhost
   
   
   tasks :
