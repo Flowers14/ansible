@@ -1,4 +1,7 @@
 ---
+- name : Create VM
+  hosts: localhost
+  
 - vsphere_guest:
     vcenter_hostname: 192.168.17.20
     username: root
