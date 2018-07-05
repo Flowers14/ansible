@@ -2,6 +2,7 @@
 - name: Create a VM from a template
   gather_facts: false
   connection: local
+  hosts: localhost
  
  
   
